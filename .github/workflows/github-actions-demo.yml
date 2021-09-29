@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Call the test action
-        uses: . # Uses an action in this
+        uses: .github/ # Uses an action in the github directory
         id: hello
       # Use the output from the `hello` step
       - name: Get the output time
