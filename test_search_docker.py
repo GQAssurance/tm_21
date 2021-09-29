@@ -1,21 +1,24 @@
 from selenium import webdriver
+import os
 import pytest
 
-@pytest.mark.search_docker
-def google_search(search_term):
-    # Use a breakpoint in the code line below to debug your script.
+
+@pytest.fixture(scope='session')
+def web_driver():
     options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    if "DISPLAY" in os.environ.keys():
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+    else:
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(options=options)
-    driver.get("https://www.google.com/search?q=" + search_term)
-    print(driver.title)
-    assert search_term in driver.title
+    yield driver
     driver.close()
 
 
-
-def test_search():
-    google_search('qa')
+@pytest.mark.search_test_v2
+def test_search(web_driver):
+    search_term = "qa"
+    web_driver.get("https://www.google.com/search?q=" + search_term)
+    assert search_term in web_driver.title
