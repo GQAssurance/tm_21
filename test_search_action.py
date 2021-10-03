@@ -17,8 +17,26 @@ def web_driver():
     driver.close()
 
 
+@pytest.fixture(scope='session')
+def base_url():
+    if "BASE_URL" in os.environ.keys():
+        return os.environ["BASE_URL"]
+    else:
+        return "https://www.google.com"
+
+
+@pytest.fixture(scope='function')
+def search_terms():
+    if "SEARCH_TERMS" in os.environ.keys():
+        return os.environ["SEARCH_TERMS"].split(",")
+    else:
+        return ["qa"]
+
+
 @pytest.mark.search_test_v3
-def test_search(web_driver):
-    search_term = "qa"
-    web_driver.get("https://www.google.com/search?q=" + search_term)
-    assert search_term in web_driver.title
+def test_search(web_driver, base_url, search_terms):
+    print("\n")
+    for term in search_terms:
+        web_driver.get(base_url + "/search?q=" + term)
+        print(web_driver.title)
+        assert term in web_driver.title

@@ -35,6 +35,7 @@ def search_terms():
 
 @pytest.mark.search_test_v2
 def test_search(web_driver, base_url, search_terms):
+    print("\n")
     for term in search_terms:
         web_driver.get(base_url + "/search?q=" + term)
         print(web_driver.title)

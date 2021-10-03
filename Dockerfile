@@ -30,4 +30,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Set Docker entry
-CMD ["pytest", "-m", "search_test_v2"]
+ENTRYPOINT ["pytest", "--capture=no"]

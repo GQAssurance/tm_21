@@ -15,4 +15,5 @@ def web_driver():
 def test_search(web_driver):
     search_term = "qa"
     web_driver.get("https://www.google.com/search?q=" + search_term)
+    print("\n"+web_driver.title)
     assert search_term in web_driver.title
