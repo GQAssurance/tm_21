@@ -1,17 +1,12 @@
 from selenium import webdriver
-import os
 import pytest
+import os
 
 
 @pytest.fixture(scope='session')
 def web_driver():
     options = webdriver.ChromeOptions()
-    if "DISPLAY" in os.environ.keys():
-        options.add_argument('--headless')
-        options.add_argument('--disable-gpu')
-        options.add_argument('--no-sandbox')
-    else:
-        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.close()
@@ -33,7 +28,7 @@ def search_terms():
         return ["qa"]
 
 
-@pytest.mark.search_test_v2
+@pytest.mark.search_test
 def test_search(web_driver, base_url, search_terms):
     for term in search_terms:
         web_driver.get(base_url + "/search?q=" + term)
