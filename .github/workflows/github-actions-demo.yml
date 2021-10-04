@@ -5,13 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Run tests on commits
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Call the test action
-        uses: .github/ # Uses an action in the github directory
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: Call the test action
+#        uses: .github/ # Uses an action in the github directory
+#        id: hello
+#      # Use the output from the `hello` step
+#      - name: Get the output time
+#        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Hello world action step
         id: hello
+        uses: actions/hello-world-docker-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

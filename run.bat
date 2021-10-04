@@ -1,1 +1,1 @@
-docker run bleh "-m search_test_v2"
+docker run tm21 "-m search_test_v3"

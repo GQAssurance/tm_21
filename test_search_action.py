@@ -33,7 +33,7 @@ def search_terms():
         return ["qa"]
 
 
-@pytest.mark.search_test_v3
+@pytest.mark.search_test_v4
 def test_search(web_driver, base_url, search_terms):
     print("\n")
     for term in search_terms:

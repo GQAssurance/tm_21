@@ -11,7 +11,7 @@ def web_driver():
     driver.close()
 
 
-@pytest.mark.search_test
+@pytest.mark.search_test_v2
 def test_search(web_driver):
     search_term = "qa"
     web_driver.get("https://www.google.com/search?q=" + search_term)
