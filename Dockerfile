@@ -17,9 +17,6 @@ ENV DISPLAY=:99
 # upgrade pip
 RUN pip install --upgrade pip
 
-# install selenium
-RUN pip install selenium
-
 # create project folder with the name code
 RUN mkdir /code
 
@@ -33,4 +30,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Set Docker entry
-ENTRYPOINT ["pytest"]
+ENTRYPOINT ["pytest", "--capture=no"]

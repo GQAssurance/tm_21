@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  testing_job:
+    runs-on: ubuntu-latest
+    name: Publish test container on push
+    env:
+      DOCKER_USER: ${{secrets.DOCKER_USER}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: login to docker
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Build docker image
+        run: docker build . --tag gqassurance/tm21:latest
+      - name: Publish docker image
+        run: docker push gqassurance/tm21:latest
