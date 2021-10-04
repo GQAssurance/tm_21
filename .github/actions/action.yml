@@ -2,15 +2,12 @@
 name: 'Search Tests'
 description: 'Run search tests in docker'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  test_mark:  # the command to mark
+    description: 'Which tests to run'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: ''
 runs:
   using: 'docker'
   image: '../../Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.test_mark }}
