@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run search tests
-        uses: ./.github/actions/
+        uses: ./.github/actions/action
         id: hello
         with:
           who-to-greet: '-m search_test_v4'
