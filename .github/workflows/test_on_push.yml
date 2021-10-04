@@ -13,4 +13,4 @@ jobs:
         uses: ./.github/test_action/
         id: test
         with:
-          test_mark: 'search_test_v4'
+          test_mark: 'search_test_v3'
