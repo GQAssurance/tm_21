@@ -10,4 +10,4 @@ runs:
   using: 'docker'
   image: '../../Dockerfile'
   args:
-    - ${{ format('-m {0}', inputs.test_mark }}
+    - ${{ format('-m {0}', inputs.test_mark) }}
