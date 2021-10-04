@@ -4,6 +4,8 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: Run tests on commits
+    env:
+      SEARCH_TERMS: testingmind,tm21
     steps:
       - name: Checkout
         uses: actions/checkout@v2
