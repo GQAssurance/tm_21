@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
+      - name: Run search tests
+        uses: ./.github/actions/my-action
         id: hello
         with:
           who-to-greet: '-m search_test_v4'

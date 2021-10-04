@@ -1,6 +1,6 @@
 # action.yml
-name: 'Web Tests'
-description: 'Run selenium tests in docker'
+name: 'Search Tests'
+description: 'Run search tests in docker'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
