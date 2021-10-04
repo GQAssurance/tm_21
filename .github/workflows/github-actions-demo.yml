@@ -1,19 +1,16 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  testing_job:
     runs-on: ubuntu-latest
-    name: Run tests on commits
+    name: Run tests on pushes
     env:
       SEARCH_TERMS: testingmind,tm21
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run search tests
-        uses: ./.github/actions/
-        id: hello
+      - name: Run tests
+        uses: ./.github/test_action/
+        id: test
         with:
           test_mark: 'search_test_v4'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"

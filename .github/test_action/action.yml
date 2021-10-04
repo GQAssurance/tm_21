@@ -1,6 +1,6 @@
 # action.yml
-name: 'Search Tests'
-description: 'Run search tests in docker'
+name: 'Docker Tests'
+description: 'Run tests in docker'
 inputs:
   test_mark:  # the command to mark
     description: 'Which tests to run'
