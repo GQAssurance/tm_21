@@ -21,4 +21,4 @@ jobs:
       - name: Run tests
         uses: docker://gqassurance/tm21:latest
         with:
-          args: ${{ format('-m {0}', inputs.test_mark) }}
+          args: -m search_test_v3
