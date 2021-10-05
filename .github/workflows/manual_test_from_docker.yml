@@ -1,4 +1,4 @@
-name: Run docker
+name: Run tests in published docker image
 on:
   workflow_dispatch:
     inputs:
@@ -11,13 +11,13 @@ on:
         required: false
         default: 'search_test_v3'
 
+defaults:
+  run:
+    working-directory: code
+
 jobs:
   testing_job:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: code
-    name: Run tests on pushes
     env:
       SEARCH_TERMS: ${{ github.event.inputs.terms }}
     steps:
