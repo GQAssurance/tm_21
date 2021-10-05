@@ -14,10 +14,12 @@ on:
 jobs:
   testing_job:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: code
     name: Run tests on pushes
     env:
       SEARCH_TERMS: ${{ github.event.inputs.terms }}
-      GITHUB_WORKSPACE: /code
     steps:
       - name: Run tests
         uses: docker://gqassurance/tm21:latest
