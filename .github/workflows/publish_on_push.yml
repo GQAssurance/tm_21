@@ -1,9 +1,11 @@
-on: [push]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
   testing_job:
     runs-on: ubuntu-latest
-    name: Publish test container on push
+    name: Publish test container on push to main
     env:
       DOCKER_USER: ${{secrets.DOCKER_USER}}
       DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}

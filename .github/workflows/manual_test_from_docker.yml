@@ -1,20 +1,27 @@
-name: Manually triggered workflow
+name: Run tests in published docker image
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
-        required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
+      terms:
+        description: 'Search Terms'
         required: false
-        default: 'The Octoverse'
+        default: 'automatic,docker'
+      mark:
+        description: 'Testing Mark'
+        required: false
+        default: 'search_test_v3'
+
+defaults:
+  run:
+    working-directory: code
 
 jobs:
-  say_hello:
+  testing_job:
     runs-on: ubuntu-latest
+    env:
+      SEARCH_TERMS: ${{ github.event.inputs.terms }}
     steps:
-      - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+      - name: Run tests
+        uses: docker://gqassurance/tm21:latest
+        with:
+          args: -m search_test_v3
