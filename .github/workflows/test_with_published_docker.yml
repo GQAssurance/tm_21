@@ -9,7 +9,7 @@ on:
       mark:
         description: 'Testing Mark'
         required: false
-        default: 'search_test_v3'
+        default: 'dockerized'
 
 jobs:
   testing_job:
@@ -20,4 +20,4 @@ jobs:
       - name: Run tests
         uses: docker://gqassurance/tm21:latest
         with:
-          args: -m search_test_v3
+          args: -m ${{ github.event.inputs.mark }}
