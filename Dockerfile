@@ -18,7 +18,8 @@ ENV DISPLAY=:99
 RUN pip install --upgrade pip
 
 # project scope
-WORKDIR /github/workspace
+RUN mkdir /code
+WORKDIR /code
 
 # install requirements
 COPY requirements.txt .
@@ -27,4 +28,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Set Docker entry
-ENTRYPOINT ["pytest", "--capture=no"]
+ENTRYPOINT ["/code/start_tests.sh"]
