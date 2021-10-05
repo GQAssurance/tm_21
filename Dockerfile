@@ -17,11 +17,8 @@ ENV DISPLAY=:99
 # upgrade pip
 RUN pip install --upgrade pip
 
-# create project folder with the name code
-RUN mkdir /code
-
 # project scope
-WORKDIR /code
+WORKDIR /github/workspace
 
 # install requirements
 COPY requirements.txt .
