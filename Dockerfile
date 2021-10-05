@@ -28,4 +28,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Set Docker entry
-ENTRYPOINT ["/code/start_tests.sh"]
+ENTRYPOINT ["pytest", "--rootdir=/code"]
