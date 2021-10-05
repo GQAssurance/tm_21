@@ -5,15 +5,11 @@ on:
       terms:
         description: 'Search Terms'
         required: false
-        default: 'automatic,docker'
+        default: 'published,docker'
       mark:
         description: 'Testing Mark'
         required: false
         default: 'search_test_v3'
-
-defaults:
-  run:
-    working-directory: code
 
 jobs:
   testing_job:
