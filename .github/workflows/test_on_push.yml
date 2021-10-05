@@ -5,12 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Run tests on pushes
     env:
-      SEARCH_TERMS: testingmind,tm21
+      SEARCH_TERMS: push,testing
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run tests
-        uses: ./.github/test_action/
-        id: test
-        with:
-          test_mark: 'search_test_v3'
+      - name: Build docker image
+        run: docker build -t tm21 .
+      - name: Run docker image
+        run: docker run -e SEARCH_TERMS -e BASE_URL tm21 "-m search_test_v3"
