@@ -9,7 +9,7 @@ def web_driver():
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(options=options)
     yield driver
-    driver.close()
+    driver.quit()
 
 
 @pytest.fixture(scope='session')
@@ -25,7 +25,7 @@ def search_terms():
     if "SEARCH_TERMS" in os.environ.keys():
         return os.environ["SEARCH_TERMS"].split(",")
     else:
-        return ["qa"]
+        return ["default"]
 
 
 @pytest.mark.parameterized
