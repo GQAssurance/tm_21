@@ -27,6 +27,7 @@ Local system needs all of these pre-installed
 - Chrome
 - Chromedriver
 - Docker
+- Docker Hub account
 - GitHub account
 
 ## Level 1:
