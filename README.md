@@ -5,7 +5,7 @@
 A simple test automation tool to demonstrate levels of automation maturity.
 
 ## Test Steps:
-- Starts a chrome browser
+- Starts a Chrome browser
 - Navigates to a Google URL with a specified search term
 - Confirms the browser title includes the search term
 
@@ -27,7 +27,8 @@ Local system needs all of these pre-installed
 - Chrome
 - Chromedriver
 - Docker
-- Github account
+- Docker Hub account
+- GitHub account
 
 ## Level 1:
 
@@ -58,14 +59,14 @@ Local system needs all of these pre-installed
 
 ## Level 4:
 
-1. Place code in a Github origin repository
+1. Place code in a GitHub origin repository
 2. (optional) Configure `./.github/test_on_push.yml` env parameters
 3. Perform a `Push` operation to origin repository
 
 ## Level 5:
 
 1. Level 4 steps
-2. Log into Github web interface
+2. Log into GitHub web interface
 3. Select "_Actions_" options
 4. Select "_Run tests in published docker image_" workflow
 5. Select "_Run workflow_" dropdown
@@ -74,7 +75,12 @@ Local system needs all of these pre-installed
 
 # Windows convenience batch files
 
-These batch files perform common docker commands for the repo
+These batch files perform local testing
+
+* testlocal.bat : run local tests
+* testparam.bat : run parameterized tests
+
+* These batch files perform common docker commands for the repo
 
 * build.bat : builds the docker image locally
 * run.bat : runs the local docker image

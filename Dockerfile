@@ -1,4 +1,5 @@
 FROM python:3.9
+RUN pip install --upgrade pip
 
 # install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -14,18 +15,20 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-# upgrade pip
-RUN pip install --upgrade pip
-
-# project scope
+# Where our code is placed
 RUN mkdir /code
 WORKDIR /code
 
-# install requirements
+# install python requirements
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+# copy our code into image
 COPY . .
 
 # Set Docker entry
 ENTRYPOINT ["pytest", "/code"]
+
+
+
+
