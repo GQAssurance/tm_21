@@ -15,5 +15,3 @@ jobs:
         run: docker build -t tm21 .
       - name: Run docker image
         run: docker run -e SEARCH_TERMS -e BASE_URL tm21 "-m dockerized"
-
-
